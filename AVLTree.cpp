@@ -115,13 +115,13 @@ void inorderTraversal(Node *root) {
     inorderTraversal(root->right);
 }
 
-// Function to perform pre-order traversal
-void preorderTraversal(Node *root) {
+// Function to perform post-order traversal
+void postorderTraversal(Node *root) {
     if (root == nullptr)
         return;
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
     cout << root->key << " ";
-    preorderTraversal(root->left);
-    preorderTraversal(root->right);
 }
 
 int main() {
@@ -136,13 +136,13 @@ int main() {
         cout<<"Do you want to continue? (Y/N) "<<endl;
         cin>>choice;
     }while(choice=='Y' || choice=='y');
-
+    
     cout << "In-order traversal of the AVL tree: ";
     inorderTraversal(root);
     cout << endl;
 
-    cout << "Pre-order traversal of the AVL tree: ";
-    preorderTraversal(root);
+    cout << "Post-order traversal of the AVL tree: ";
+    postorderTraversal(root);
     cout << endl;
 
     return 0;
